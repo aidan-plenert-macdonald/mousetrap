@@ -1,0 +1,29 @@
+# 
+# Docker Compose YAML
+# 
+# See https://docs.docker.com/compose/compose-file/
+# for more details
+# 
+
+version: "3"
+
+services:
+  database:
+    # Simple database service
+    # https://hub.docker.com/_/mysql/
+    #
+    # And some examples
+    # https://stackoverflow.com/questions/39175194/docker-compose-persistent-data-mysql
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: user
+      MYSQL_PASS: password
+    volumes:
+      - ./data:/var/lib/mysql
+  webapp:
+    build: ./webapp
+    ports:
+      - "8080:8080"
+

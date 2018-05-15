@@ -14,10 +14,10 @@ services:
     #
     # And some examples
     # https://stackoverflow.com/questions/39175194/docker-compose-persistent-data-mysql
-    image: mysql:latest
+    image: mariadb:latest
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: rootable
       MYSQL_USER: user
       MYSQL_PASS: password
       MYSQL_DATABASE: mice

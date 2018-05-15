@@ -6,6 +6,9 @@ all: down build up
 down:
 	docker-compose -f docker-compose.yml -f docker-compose.test.yml down
 
+clean: down
+	docker-compose -f docker-compose.yml -f docker-compose.test.yml rm -v
+
 build: $(SOURCE)
 	docker-compose -f docker-compose.yml -f docker-compose.test.yml build
 

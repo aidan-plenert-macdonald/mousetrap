@@ -1,11 +1,16 @@
+SOURCE=$(shell find ./ -type f -exclude test)
+TEST_SOURCE=$(shell find ./test -type f)
+
 all: down build up
 
 down:
-	docker-compose down
+	docker-compose -f docker-compose.yml -f docker-compose.test.yml down
 
-build:
-	docker-compose down
+build: $(SOURCE)
+	docker-compose -f docker-compose.yml -f docker-compose.test.yml build
 
-up:
-	docker-compose up
+up: build
+	docker-compose -f docker-compose.yml up
 
+test: down build $(TEST_SOURCE)
+	docker-compose -f docker-compose.yml -f docker-compose.test.yml up

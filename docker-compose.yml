@@ -20,6 +20,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: user
       MYSQL_PASS: password
+      MYSQL_DATABASE: mice
     volumes:
       - ./data:/var/lib/mysql
   webapp:

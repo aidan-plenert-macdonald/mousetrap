@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
+var path = require('path');
 
 var app = express();
 app.use(bodyParser.json());
@@ -26,11 +27,13 @@ app.get('/mice', function (req, res) {
     conn.connect()
     res.json([
 	{
-	    "name": "Henry",
+	    "name": "Keith",
 	    "age": "1"
 	}
     ]);
 });
+
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.post('/mice', function (req, res) {
     res.json({

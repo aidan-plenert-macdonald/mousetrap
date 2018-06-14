@@ -9,8 +9,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 var conn = mysql.createConnection({
     host: 'database',
-    user: 'user',
-    password: 'password',
+    user: 'root',
+    password: 'rootable',
     database: 'mice'
 });
 
@@ -27,7 +27,7 @@ var conn = mysql.createConnection({
 app.get('/mice', function (req, res) {
     res.json([
 	{
-	    "name": "Henry",
+	    "name": "Keith",
 	    "age": "1"
 	}
     ]);

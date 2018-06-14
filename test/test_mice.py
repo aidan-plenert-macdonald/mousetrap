@@ -9,6 +9,10 @@ def test_mice_get():
         }
     ]
 
+def test_static_get():
+    res = requests.get("http://webapp:8080/public/text.txt")
+    assert res.text == "sample text\n"
+
 def test_mice_post():
     res = requests.post("http://webapp:8080/mice", {"test":"results"})
     print(res.text)

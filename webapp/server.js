@@ -15,6 +15,8 @@ var conn = mysql.createConnection({
 });
 
 
+
+
 /*
  * Basic Rest API functionality through Express.js
  *
@@ -24,13 +26,28 @@ var conn = mysql.createConnection({
  */
 
 app.get('/mice', function (req, res) {
-    conn.connect()
-    res.json([
-	{
-	    "name": "Keith",
-	    "age": "1"
-	}
-    ]);
+    var error;
+    var data;
+    console.log("hello");
+        conn.query("SELECT * FROM mice", function (err, result, fields) {
+    if (err) {
+        error = err;
+        data = result;
+        console.log("41" + err);
+        }
+        });
+        console.log(data);
+    if(error!=undefined) {
+         res.json({
+        "status": "error",
+        "body": error
+    });
+    } else {
+        res.json({
+        "status": "complete",
+        "body": data
+    });
+    }
 });
 
 app.use('/public', express.static(path.join(__dirname, 'public')));

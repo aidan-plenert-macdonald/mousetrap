@@ -25,34 +25,30 @@ var conn = mysql.createConnection({
  *
  */
 
-app.get('/mice', function (req, res) {
+ app.get('/mice', function (req, res) {
     var error;
     var data;
     console.log("hello");
-        conn.query("SELECT * FROM mice", function (err, result, fields) {
-    if (err) {
-        error = err;
-        data = result;
-        console.log("41" + err);
+    conn.query("SELECT * FROM mice", function (err, result, fields) {
+        if (err) {
+            error = err;
+            data = result;
+            console.log("41" + err);
+
         }
-        });
-        console.log(data);
-    if(error!=undefined) {
-         res.json({
-        "status": "error",
-        "body": error
+        else {
+            res.json(
+        result
+        );
+        }
     });
-    } else {
-        res.json({
-        "status": "complete",
-        "body": data
-    });
-    }
+
 });
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.post('/mice', function (req, res) {
+    //conn.query("INSERT INTO mice VALUES")
     res.json({
 	"status": "complete",
 	"body": req.body

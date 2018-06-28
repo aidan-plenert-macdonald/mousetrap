@@ -21,3 +21,7 @@ def test_mice_post():
         "status": "complete",
         "body": {"test":"results"}
     }
+
+def test_static_get_jquery():
+    res = requests.get("http://webapp:8080/static/jquery.js")
+    assert int(res.status_code/100) == 2

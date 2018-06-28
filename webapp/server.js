@@ -34,6 +34,7 @@ app.get('/mice', function (req, res) {
 });
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/static', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 
 app.post('/mice', function (req, res) {
     res.json({

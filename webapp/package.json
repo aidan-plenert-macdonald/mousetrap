@@ -11,6 +11,10 @@
 	"mysql": "^2.15.0",
 	"body-parser": "^1.9.2",
     "jquery": "^3.3.1",
-    "pivottable": "^2.21.0"
+    "pivottable": "^2.21.0",
+    "eslint-config-google": "^0.9.1",
+    "eslint": "^5.0.1"
+    
+
     }
 }

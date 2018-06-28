@@ -1,9 +1,9 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var mysql = require('mysql');
-var path = require('path');
+const express = require('express');
+const bodyParser = require('body-parser');
+// const mysql = require('mysql');
+const path = require('path');
 
-var app = express();
+const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -14,9 +14,6 @@ var conn = mysql.createConnection({
     database: 'mice'
 });
 
-
-
-
 /*
  * Basic Rest API functionality through Express.js
  *
@@ -24,6 +21,7 @@ var conn = mysql.createConnection({
  * for more examples
  *
  */
+
 
  app.get('/mice', function (req, res) {
     var error;
@@ -46,7 +44,8 @@ var conn = mysql.createConnection({
 });
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
-app.use('/static/jquery', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
+app.use('/static/jquery', 
+    express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 
 app.use('/static/pivottable', express.static(path.join(__dirname, 'node_modules/pivottable/dist')));
 app.post('/mice', function (req, res) {
@@ -75,4 +74,6 @@ app.post('/mice', function (req, res) {
 
 });
 
-app.listen(8080, () => console.log('Trapping mice on port 8080'));
+app.listen(8080, function() {
+console.log('Trapping mice on port 8080');
+});

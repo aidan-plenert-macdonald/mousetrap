@@ -23,5 +23,9 @@ def test_mice_post():
     }
 
 def test_static_get_jquery():
-    res = requests.get("http://webapp:8080/static/jquery.js")
+    res = requests.get("http://webapp:8080/static/jquery/jquery.js")
+    assert int(res.status_code/100) == 2
+
+def test_static_get_pivottable():
+    res = requests.get("http://webapp:8080/static/pivottable/pivot.js")
     assert int(res.status_code/100) == 2

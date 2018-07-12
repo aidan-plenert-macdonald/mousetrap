@@ -48,11 +48,27 @@ var conn = mysql.createConnection({
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.post('/mice', function (req, res) {
-    //conn.query("INSERT INTO mice VALUES")
-    res.json({
-	"status": "complete",
-	"body": req.body
+    conn.query('INSERT INTO mice SET ?', req.data, function(err, result, fields) {
+        if (err) {
+            error = err;
+            data = result;
+            console.log("" + err);
+              res.json({
+                "status": "failed",
+                "body": err, "input": req.data 
+             });
+        }
+        else{
+            console.log("SUCCESS!!!!");
+            //var sql = "INSERT INTO mice (name, age, weight) VALUES"
+            res.json({
+                "status": "complete",
+                "body": "success"
+             });
+        }
     });
+    //conn.query("INSERT INTO mice VALUES")
+
 });
 
 app.listen(8080, () => console.log('Trapping mice on port 8080'));

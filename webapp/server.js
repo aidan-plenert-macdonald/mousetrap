@@ -44,7 +44,7 @@ var conn = mysql.createConnection({
 });
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
-app.use('/static/jquery', 
+app.use('/static/jquery',
     express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 
 app.use('/static/pivottable', express.static(path.join(__dirname, 'node_modules/pivottable/dist')));

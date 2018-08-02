@@ -26,7 +26,7 @@ app.get('/mice', function(req, res) {
 });
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
-app.use('/static/jquery', 
+app.use('/static/jquery',
     express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 
 app.use('/static/pivottable',

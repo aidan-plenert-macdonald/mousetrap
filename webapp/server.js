@@ -33,7 +33,7 @@ var conn = mysql.createConnection({
         if (err) {
             error = err;
             data = result;
-            console.log("41" + err);
+            //console.log("41" + err);
 
         }
         else {

@@ -28,7 +28,7 @@ var conn = mysql.createConnection({
  app.get('/mice', function (req, res) {
     var error;
     var data;
-    console.log("hello");
+    //console.log("hello");
     conn.query("SELECT * FROM mice", function (err, result, fields) {
         if (err) {
             error = err;
@@ -50,14 +50,16 @@ app.use('/static/jquery', express.static(path.join(__dirname, 'node_modules/jque
 
 app.use('/static/pivottable', express.static(path.join(__dirname, 'node_modules/pivottable/dist')));
 app.post('/mice', function (req, res) {
-    conn.query('INSERT INTO mice SET ?', req.data, function(err, result, fields) {
+    console.log(req.body);
+    conn.query('INSERT INTO mice SET ?', [req.body], function(err, result, fields) {
         if (err) {
             error = err;
             data = result;
-            console.log("" + err);
+            console.log("DB ERROR: " + err);
               res.json({
                 "status": "failed",
-                "body": err, "input": req.data 
+                "body": err, 
+                "input": req.body 
              });
         }
         else{

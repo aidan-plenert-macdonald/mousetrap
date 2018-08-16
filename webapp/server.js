@@ -46,7 +46,9 @@ var conn = mysql.createConnection({
 });
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/static/jquery', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 
+app.use('/static/pivottable', express.static(path.join(__dirname, 'node_modules/pivottable/dist')));
 app.post('/mice', function (req, res) {
     conn.query('INSERT INTO mice SET ?', req.data, function(err, result, fields) {
         if (err) {

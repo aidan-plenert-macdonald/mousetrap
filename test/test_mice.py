@@ -21,3 +21,11 @@ def test_mice_post():
         "status": "complete",
         "body": {"name":"Flying Pasta","age":-10, "weight":-95}
     }
+
+def test_static_get_jquery():
+    res = requests.get("http://webapp:8080/static/jquery/jquery.js")
+    assert int(res.status_code/100) == 2
+
+def test_static_get_pivottable():
+    res = requests.get("http://webapp:8080/static/pivottable/pivot.js")
+    assert int(res.status_code/100) == 2

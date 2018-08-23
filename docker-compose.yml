@@ -31,8 +31,7 @@ services:
   mouse:
     build: ./mouse
     volumes:
-      - './mouse:/usr/src/app'
-      - './mouse/node_modules:/usr/src/app/node_modules'
+      - './mouse/src:/usr/src/app/src'
     ports:
       - '3000:3000'
 

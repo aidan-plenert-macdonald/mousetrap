@@ -25,11 +25,22 @@ services:
       - ./data:/var/lib/mysql
   webapp:
     build: ./webapp
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+      #start_period: 1m
     ports:
       - "8080:8080"
 
   mouse:
     build: ./mouse
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
     volumes:
       - './mouse/src:/usr/src/app/src'
     ports:

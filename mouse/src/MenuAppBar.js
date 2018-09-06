@@ -43,6 +43,18 @@ class MenuAppBar extends React.Component {
   handleClose = () => {
     this.setState({ anchorEl: null });
   };
+  handleAddMice = () =>
+  {
+    window.location.href= "/AddMice";
+  };
+  handleSettings = () =>
+  {
+    window.location.href= "/Settings";
+  };
+  handleCalendar = () =>
+  {
+    window.location.href= "/Calendar";
+  };
 
   render() {
     const { classes } = this.props;
@@ -79,9 +91,9 @@ class MenuAppBar extends React.Component {
                   open={open}
                   onClose={this.handleClose}
                 >
-                  <MenuItem>TestItem</MenuItem>
-                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                  <MenuItem onClick={this.handleAddMice}>Add Mice</MenuItem>
+                  <MenuItem onClick={this.handleCalendar}>Calendar</MenuItem>
+                  <MenuItem onClick={this.handleSettings}>Settings</MenuItem>
                 </Menu>
               </div>
             )}

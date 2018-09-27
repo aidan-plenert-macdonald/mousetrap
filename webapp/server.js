@@ -14,6 +14,7 @@ var conn = mysql.createConnection({
     database: 'mice'
 });
 
+
 /*
  * Basic Rest API functionality through Express.js
  *
@@ -21,7 +22,6 @@ var conn = mysql.createConnection({
  * for more examples
  *
  */
-
 
  app.get('/mice', function (req, res) {
     var error;
@@ -40,13 +40,11 @@ var conn = mysql.createConnection({
         );
         }
     });
-
 });
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use('/static/jquery',
     express.static(path.join(__dirname, 'node_modules/jquery/dist')));
-
 app.use('/static/pivottable', express.static(path.join(__dirname, 'node_modules/pivottable/dist')));
 app.post('/mice', function (req, res) {
     console.log(req.body);

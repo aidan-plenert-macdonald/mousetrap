@@ -14,7 +14,7 @@ RUN npm install -g #--silent
 
 
 COPY . .
-RUN node node_modules/eslint/bin/eslint.js . --ext js
+RUN node node_modules/eslint/bin/eslint.js . --ext js --ext jsx
 
 # start app
 CMD ["npm", "start"]

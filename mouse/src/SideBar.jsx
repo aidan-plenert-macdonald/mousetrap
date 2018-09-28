@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -10,7 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import { mailFolderListItems } from './tileData';
+import MailFolderListItems from './tileData';
 
 
 const styles = {
@@ -27,58 +26,60 @@ const styles = {
 };
 
 class SideBar extends React.Component {
-  state = {
-    left: false,
-  };
-  toggleDrawer = (side, open) => () => {
-    this.setState({
-      [side]: open,
-    });
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      left: false,
+    };
+  }
 
-render() {
+  toggleDrawer(side, open) {
+    return () => {
+      this.setState({
+        [side]: open,
+      });
+    };
+  }
+
+  render() {
     const { classes } = this.props;
+    const { left } = this.state;
 
     const sideList = (
       <div className={classes.list}>
-        <List>{mailFolderListItems}</List>
+        <List>{MailFolderListItems()}</List>
         <Divider />
-        
-      </div>
-    );
 
-    const fullList = (
-      <div className={classes.fullList}>
-        <List>{mailFolderListItems}</List>
-        <Divider />
-       
       </div>
     );
 
     return (
       <div>
-      <AppBar position="static">
-      <Toolbar>
-      <IconButton 
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
               className={classes.menuButton}
-              color="inherit" aria-label="Menu"
+              color="inherit"
+              aria-label="Menu"
               onClick={this.toggleDrawer('left', true)}
-            >  <MenuIcon />
+            >
+              {' '}
+              <MenuIcon />
             </IconButton>
             <Typography variant="title" color="inherit" className={classes.flex}>
               MouseTrap
             </Typography>
-        <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
-          <div
-            tabIndex={0}
-            role="button"
-            onClick={this.toggleDrawer('left', false)}
-            onKeyDown={this.toggleDrawer('left', false)}
-          >
-            {sideList}
-          </div>
-        </Drawer>
-        </Toolbar>
+            <Drawer open={left} onClose={this.toggleDrawer('left', false)}>
+              <div
+                tabIndex={0}
+                role="button"
+                onClick={this.toggleDrawer('left', false)}
+                onKeyDown={this.toggleDrawer('left', false)}
+              >
+                {sideList}
+              </div>
+            </Drawer>
+          </Toolbar>
         </AppBar>
       </div>
     );
@@ -86,7 +87,7 @@ render() {
 }
 
 SideBar.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(SideBar);

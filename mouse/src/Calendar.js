@@ -1,14 +1,15 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import Card from '@material-ui/core/Card';
 import leaguelogo from './leaguelogo.png';
 import ucsd from './ucsd.png';
-import Card from '@material-ui/core/Card';
 import SideBar from './SideBar';
 import Panel from './Panel';
 
 class Calendar extends Component {
   constructor(props) {
     super(props);
-  };
+  }
+
   render() {
     return (
       <div className="Calendar">
@@ -19,10 +20,8 @@ class Calendar extends Component {
             <h1>CALENDAR CLASS TEST</h1>
           </div>
         </header>
-        <Panel/>
-        <p className="Calendar-intro">
-
-        </p>
+        <Panel />
+        <p className="Calendar-intro" />
       </div>
     );
   }

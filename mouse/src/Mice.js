@@ -1,14 +1,15 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import Card from '@material-ui/core/Card';
 import leaguelogo from './leaguelogo.png';
 import ucsd from './ucsd.png';
-import Card from '@material-ui/core/Card';
 import SideBar from './SideBar';
 import Panel from './Panel';
 
 class Mice extends Component {
   constructor(props) {
     super(props);
-  };
+  }
+
   render() {
     return (
       <div className="Mice">
@@ -19,10 +20,8 @@ class Mice extends Component {
             <h1>MICE CLASS TEST</h1>
           </div>
         </header>
-        <Panel/>
-        <p className="Mice-intro">
-
-        </p>
+        <Panel />
+        <p className="Mice-intro" />
       </div>
     );
   }

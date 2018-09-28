@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Router, Route, Switch } from 'react-router';
-import App from "./App";
-import Mice from "./Mice";
+import React, {Component} from 'react';
+import {Router, Route, Switch} from 'react-router';
+import App from './App';
+import Mice from './Mice';
 import createHistory from 'history/createBrowserHistory';
 import SideBar from './SideBar';
 import Settings from './Settings';

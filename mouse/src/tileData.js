@@ -12,16 +12,24 @@ import ReportIcon from '@material-ui/icons/Report';
 
 export const mailFolderListItems = (
   <div>
-    <ListItem button onClick={() => { window.location.href = "/"; }}>
+    <ListItem button onClick={() => {
+      window.location.href = '/';
+    }}>
       <ListItemText primary="Home" />
     </ListItem>
-    <ListItem button onClick={() => { window.location.href = "/mice"; }}>
+    <ListItem button onClick={() => {
+      window.location.href = '/mice';
+    }}>
       <ListItemText primary="Add Mice" />
     </ListItem>
-    <ListItem button onClick={() => { window.location.href = "/settings"; }}>
+    <ListItem button onClick={() => {
+      window.location.href = '/settings';
+    }}>
       <ListItemText primary="Settings" />
     </ListItem>
-    <ListItem button onClick={() => { window.location.href = "/calendar"; }}>
+    <ListItem button onClick={() => {
+      window.location.href = '/calendar';
+    }}>
       <ListItemText primary="Calendar" />
     </ListItem>
   </div>

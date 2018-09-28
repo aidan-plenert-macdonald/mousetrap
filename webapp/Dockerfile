@@ -11,7 +11,7 @@ RUN apk add --no-cache mysql-client
 
 
 COPY . .
-RUN node node_modules/eslint/bin/eslint.js *.js
+RUN node node_modules/eslint/bin/eslint.js . --ext js
 
 
 EXPOSE 8080

@@ -8,19 +8,20 @@ class EventForm extends React.Component {
 
 constructor() {
      super();
-     this.state = {id: 1};
+     this.state = {};
   }
   handleChange = name => event => {
     this.setState({ [name]: event.target.checked });
   };
   handleSubmit = (event) => {
      //Make a network call somewhere
+
      event.preventDefault();
   }
 
   render() {
      return( 
-        <form onSubmit={this.handleSubmit}>
+        <form method='post' action='http://localhost:8080/event'>
           <TextField label="Event Name"  onChange={this.change} />
 
           <TextField

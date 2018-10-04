@@ -68,6 +68,10 @@ app.post('/mice', function(req, res) {
   // conn.query("INSERT INTO mice VALUES")
 });
 
-app.listen(8080, function() {
-  console.log('Trapping mice on port 8080');
+
+app.post('/event',function(req,res){
+    console.log(req.body);
+    res.json(req.body);
 });
+
+app.listen(8080, () => console.log('Trapping mice on port 8080'));

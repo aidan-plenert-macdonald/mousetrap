@@ -1,16 +1,18 @@
 {
-    "name": "mousetrap",
-    "version": "1.0.0",
-    "description": "REST API's for mousetrap",
-    "main": "server.js",
-    "scripts": {
-	"start": "node server.js"
-    },
-    "dependencies": {
-	"express": "^4.16.1",
-	"mysql": "^2.15.0",
-	"body-parser": "^1.9.2",
-    "jquery": "^3.3.1",
-    "pivottable": "^2.21.0"
-    }
+   "name": "mousetrap",
+   "version": "1.0.0",
+   "description": "REST API's for mousetrap",
+   "main": "server.js",
+   "scripts": {
+      "start": "node server.js"
+   },
+   "dependencies": {
+      "body-parser": "^1.9.2",
+      "eslint": "^5.0.1",
+      "eslint-config-google": "^0.9.1",
+      "express": "^4.16.1",
+      "jquery": "^3.3.1",
+      "mysql": "^2.15.0",
+      "pivottable": "^2.21.0"
+   }
 }

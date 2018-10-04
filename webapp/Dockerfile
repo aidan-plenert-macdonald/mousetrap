@@ -5,10 +5,14 @@ FROM node:alpine
 
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm install
+
+RUN npm install -g
 RUN apk add --no-cache mysql-client
 
+
 COPY . .
+RUN node node_modules/eslint/bin/eslint.js . --ext js
+
 
 EXPOSE 8080
 

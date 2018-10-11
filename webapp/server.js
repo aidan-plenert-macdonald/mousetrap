@@ -69,7 +69,7 @@ app.post('/mice', function(req, res) {
 });
 
 
-app.post('/event',function(req,res){
+app.post('/event', function(req, res) {
     console.log(req.body);
     res.json(req.body);
 });

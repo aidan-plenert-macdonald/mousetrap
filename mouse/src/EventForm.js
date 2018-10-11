@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import axios from 'axios';
-const instance = axios.create({baseURL: 'http://localhost:8080'})
+
 
 
 class EventForm extends React.Component {

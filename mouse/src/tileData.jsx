@@ -7,6 +7,7 @@ function MailFolderListItems() {
     <div>
       <ListItem
         button
+        data-path="/"
         onClick={() => {
           window.location.href = '/';
         }}
@@ -15,6 +16,7 @@ function MailFolderListItems() {
       </ListItem>
       <ListItem
         button
+        data-path="/mice"
         onClick={() => {
           window.location.href = '/mice';
         }}
@@ -23,6 +25,7 @@ function MailFolderListItems() {
       </ListItem>
       <ListItem
         button
+        data-path="/settings"
         onClick={() => {
           window.location.href = '/settings';
         }}
@@ -31,6 +34,7 @@ function MailFolderListItems() {
       </ListItem>
       <ListItem
         button
+        data-path="/calendar"
         onClick={() => {
           window.location.href = '/calendar';
         }}

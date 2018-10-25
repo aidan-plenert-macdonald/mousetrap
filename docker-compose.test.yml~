@@ -1,0 +1,8 @@
+#
+# Test specific docker-compose file
+#
+version: "3"
+
+services:
+  test:
+    build: test

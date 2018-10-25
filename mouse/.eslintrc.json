@@ -1,8 +1,13 @@
 {
     "extends": [
-	"airbnb"
+	    "airbnb"
     ],
     "env": {
-	"browser": true
+        "browser": true
+    },
+    "parser": "babel-eslint",
+    "settings":{
+        "import/no-unresolved":"off"
     }
+    
 }

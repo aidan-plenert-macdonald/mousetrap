@@ -38,7 +38,7 @@ it('Routes identified and confirmed', () => {
   {
     for(var Route in routeList)
     {
-    ListItem.getElements(). //ToDo: get custom data from ListItems Continue: cross checking ListItem data to RouteList paths
+    //ListItem.getElements(). //ToDo: get custom data from ListItems Continue: cross checking ListItem data to RouteList paths
     }
   }
 });

@@ -22,4 +22,5 @@ jobs:
           docker_layer_caching: true
       - run:
           name: Build
-          command: make build
+          command: |
+            docker-compose -f docker-compose.yml -f docker-compose.test.yml build

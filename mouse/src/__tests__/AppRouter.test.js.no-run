@@ -1,18 +1,18 @@
 import React from 'react';
 import expect from 'expect';
 import renderer from 'react-test-renderer';
-import SideBar from "../src/SideBar.jsx";
-import AppRouter from "../src/AppRouter.jsx";
+import SideBar from '../src/SideBar.jsx';
+import AppRouter from '../src/AppRouter.jsx';
 
 let routeList;
 
 describe('AppRouter', () => {
   let routeWrapper;
   let routeArray;
-  before(()=>{
+  before(() => {
     routeWrapper = shallow(<AppRouter />);
     routeArray = routeWrapper.getElements();
-    for (var component in routeArray) {
+    for (const component in routeArray) {
       routeList.add(component);
     }
   });
@@ -24,9 +24,9 @@ it('AppRouter renders routes', () => {
 
 describe('List', () => {
   let list;
-  beforeEach(()=>{
+  beforeEach(() => {
     list = shallow(<List>{MailFolderListItems()}</List>);
- });
+  });
 });
 
 it('List renders table', () => {
@@ -34,12 +34,9 @@ it('List renders table', () => {
 });
 
 it('Routes identified and confirmed', () => {
-  for(var ListItem in list)
-  {
-    for(var Route in routeList)
-    {
-    //ListItem.getElements(). //ToDo: get custom data from ListItems Continue: cross checking ListItem data to RouteList paths
+  for (const ListItem in list) {
+    for (const Route in routeList) {
+    // ListItem.getElements(). //ToDo: get custom data from ListItems Continue: cross checking ListItem data to RouteList paths
     }
   }
 });
-

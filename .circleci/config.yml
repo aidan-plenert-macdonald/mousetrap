@@ -1,0 +1,26 @@
+version: 2
+jobs:    
+  build:
+    branches:
+      only:
+        - master
+        - develop
+        - /release.*/
+        - /feature.*/
+        - /issue.*/
+    docker:
+      - image: docker:17-git
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: |
+            apk add --update py-pip
+            pip install docker-compose
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Build
+          command: |
+            docker-compose -f docker-compose.yml -f docker-compose.test.yml build

@@ -14,7 +14,6 @@ function Mice() {
           <h1>MICE CLASS TEST</h1>
         </div>
       </header>
-      
       <Panel />
       <p className="Mice-intro" />
     </div>

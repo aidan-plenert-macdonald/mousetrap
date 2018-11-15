@@ -51,21 +51,19 @@ app.post('/mice', function(req, res) {
           error = err;
           data = result;
           console.log('DB ERROR: ' + err);
-          res.json({
+          res.status(err.status || 500).json({
             'status': 'failed',
             'body': err,
             'input': req.body,
           });
         } else {
           console.log('SUCCESS!!!!');
-          // var sql = "INSERT INTO mice (name, age, weight) VALUES"
           res.json({
             'status': 'complete',
             'body': 'success',
           });
         }
       });
-  // conn.query("INSERT INTO mice VALUES")
 });
 
 

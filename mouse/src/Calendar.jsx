@@ -15,7 +15,7 @@ function Calendar() {
         </div>
       </header>
       <Panel />
-      <EventForm/>
+      <EventForm />
       <p className="Calendar-intro" />
     </div>
   );

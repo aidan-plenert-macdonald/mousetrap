@@ -29,12 +29,10 @@ class EventForm extends React.Component {
     const { eventName, date, repeats } = this.state;
 
     axios.post('/api/mice', { eventName, date, repeats });
-      
   }
 
   render() {
     const { eventName, date, repeats } = this.state;
-    console.log(eventName + date + repeats);
     return (
       <form onSubmit={this.onSubmit}>
         <TextField label="Event Name" name="eventName" value={eventName} onChange={this.onChange} />

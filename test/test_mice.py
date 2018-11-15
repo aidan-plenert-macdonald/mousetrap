@@ -11,12 +11,16 @@ def test_mice_get():
 
 def test_mice_post():
     res = requests.post("http://proxy/api/mice", default_entry)
-    print(res.text)
-    res.json()
     assert res.json() == {
         "status": "complete",
         "body": "success"
-    }
+    }, res.text
+
+
+def test_mice_form_post():
+    entry = {'eventName': 'mouse', 'date': '2018-11-08', 'repeats': False}
+    res = requests.post("http://proxy/api/mice", json=entry)
+    assert res.ok, res.text
 
 
 def test_static_get_jquery():

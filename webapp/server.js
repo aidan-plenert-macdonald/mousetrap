@@ -13,15 +13,42 @@ let conn = mysql.createConnection({
   password: 'rootable',
   database: 'mice',
 });
-
+/**
+ * Generates a function to insert to a table
+ * @param {String} tablename
+ * @return {function} Inserts tablename
+ */
+function tableInserter(tablename) {
+  return function(req, res) {
+    conn.query('INSERT INTO ' + tablename + ' SET ?', [req.body],
+    function(err, result, fields) {
+      if (err) {
+        error = err;
+        data = result;
+        console.log('DB ERROR: ' + err);
+        res.status(err.status || 500).json({
+          'status': 'failed',
+          'body': err,
+          'input': req.body,
+        });
+      } else {
+        console.log('SUCCESS!!!!');
+        res.json({
+          'status': 'complete',
+          'body': 'success',
+        });
+      }
+    });
+  };
+}
 
 /*
- * Basic Rest API functionality through Express.js
- *
- * See https://expressjs.com/en/starter/basic-routing.html
- * for more examples
- *
- */
+* Basic Rest API functionality through Express.js
+*
+* See https://expressjs.com/en/starter/basic-routing.html
+* for more examples
+*
+*/
 
 app.get('/mice', function(req, res) {
   // console.log("hello");
@@ -32,7 +59,7 @@ app.get('/mice', function(req, res) {
       // console.log("41" + err);
     } else {
       res.json(
-          result
+        result
       );
     }
   });
@@ -40,36 +67,16 @@ app.get('/mice', function(req, res) {
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use('/static/jquery',
-    express.static(path.join(__dirname, 'node_modules/jquery/dist')));
+express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 app.use('/static/pivottable', express.static(path.join(__dirname,
-    'node_modules/pivottable/dist')));
-app.post('/mice', function(req, res) {
-  console.log(req.body);
-  conn.query('INSERT INTO mice SET ?', [req.body],
-      function(err, result, fields) {
-        if (err) {
-          error = err;
-          data = result;
-          console.log('DB ERROR: ' + err);
-          res.status(err.status || 500).json({
-            'status': 'failed',
-            'body': err,
-            'input': req.body,
-          });
-        } else {
-          console.log('SUCCESS!!!!');
-          res.json({
-            'status': 'complete',
-            'body': 'success',
-          });
-        }
-      });
-});
+  'node_modules/pivottable/dist'))
+);
+app.post('/mice', tableInserter('mice'));
 
 
-app.post('/event', function(req, res) {
+  app.post('/event', function(req, res) {
     console.log(req.body);
     res.json(req.body);
-});
+  });
 
-app.listen(8080, () => console.log('Trapping mice on port 8080'));
+  app.listen(8080, () => console.log('Trapping mice on port 8080'));

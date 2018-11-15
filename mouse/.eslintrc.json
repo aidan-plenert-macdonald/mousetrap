@@ -1,8 +1,9 @@
 {
     "extends": [
-	"airbnb"
+	    "airbnb"
     ],
     "env": {
-	"browser": true
+        "browser": true,
+        "jest": true
     }
 }

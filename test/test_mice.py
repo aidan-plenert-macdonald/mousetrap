@@ -17,9 +17,9 @@ def test_mice_post():
     }, res.text
 
 
-def test_mice_form_post():
+def test_event_form():
     entry = {'eventName': 'mouse', 'date': '2018-11-08', 'repeats': False}
-    res = requests.post("http://proxy/api/mice", json=entry)
+    res = requests.post("http://proxy/api/events", json=entry)
     assert res.ok, res.text
 
 

@@ -15,5 +15,5 @@ build: $(SOURCE)
 up: build
 	docker-compose -f docker-compose.yml up
 
-test: down build $(TEST_SOURCE)
-	docker-compose -f docker-compose.yml -f docker-compose.test.yml up
+test: clean down build $(TEST_SOURCE)
+	docker-compose -f docker-compose.yml -f docker-compose.test.yml up --exit-code-from test

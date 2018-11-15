@@ -7,12 +7,20 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-let conn = mysql.createConnection({
-  host: 'database',
-  user: 'root',
-  password: 'rootable',
-  database: 'mice',
-});
+/**
+ * For renewable connections
+ * @return {Connection} MariaDB/MySQL connection
+ */
+function conn() {
+  return mysql.createConnection({
+    host: 'database',
+    user: 'root',
+    password: 'rootable',
+    database: 'mice',
+  });
+}
+
+
 /**
  * Generates a function to insert to a table
  * @param {String} tablename
@@ -20,7 +28,7 @@ let conn = mysql.createConnection({
  */
 function tableInserter(tablename) {
   return function(req, res) {
-    conn.query('INSERT INTO ' + tablename + ' SET ?', [req.body],
+    conn().query('INSERT INTO ' + tablename + ' SET ?', [req.body],
     function(err, result, fields) {
       if (err) {
         error = err;
@@ -52,7 +60,7 @@ function tableInserter(tablename) {
 
 app.get('/mice', function(req, res) {
   // console.log("hello");
-  conn.query('SELECT * FROM mice', function(err, result, fields) {
+  conn().query('SELECT * FROM mice', function(err, result, fields) {
     if (err) {
       error = err;
       data = result;
@@ -74,9 +82,6 @@ app.use('/static/pivottable', express.static(path.join(__dirname,
 app.post('/mice', tableInserter('mice'));
 
 
-  app.post('/event', function(req, res) {
-    console.log(req.body);
-    res.json(req.body);
-  });
+  app.post('/events', tableInserter('events'));
 
   app.listen(8080, () => console.log('Trapping mice on port 8080'));

@@ -28,10 +28,8 @@ class EventForm extends React.Component {
     // get our form data out of state
     const { eventName, date, repeats } = this.state;
 
-    axios.post('/mice', { eventName, date, repeats })
-      .then((result) => {
-        console.log(`it works! ${result}`);
-      });
+    axios.post('/api/mice', { eventName, date, repeats });
+      
   }
 
   render() {

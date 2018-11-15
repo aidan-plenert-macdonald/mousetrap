@@ -2,6 +2,7 @@ import React from 'react';
 import leaguelogo from './leaguelogo.png';
 import ucsd from './ucsd.png';
 import Panel from './Panel';
+import EventForm from './EventForm';
 
 function Calendar() {
   return (
@@ -14,6 +15,7 @@ function Calendar() {
         </div>
       </header>
       <Panel />
+      <EventForm/>
       <p className="Calendar-intro" />
     </div>
   );

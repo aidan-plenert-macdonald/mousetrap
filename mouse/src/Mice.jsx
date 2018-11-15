@@ -3,6 +3,7 @@ import leaguelogo from './leaguelogo.png';
 import ucsd from './ucsd.png';
 import Panel from './Panel';
 
+
 function Mice() {
   return (
     <div className="Mice">
@@ -13,6 +14,7 @@ function Mice() {
           <h1>MICE CLASS TEST</h1>
         </div>
       </header>
+      
       <Panel />
       <p className="Mice-intro" />
     </div>

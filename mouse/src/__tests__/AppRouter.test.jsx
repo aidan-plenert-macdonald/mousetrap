@@ -1,5 +1,5 @@
 import React from 'react';
-import expect from 'expect';
+import Expect from 'expect';
 import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
 import SideBar from '../SideBar';
@@ -32,7 +32,7 @@ describe('List', () => {
   it('List renders table', () => {
     expect(list.find('listItems').length).toEqual(list.length);
   });
-  
+
   it('Routes identified and confirmed', () => {
     for (const ListItem in list) {
       for (const Route in routeList) {

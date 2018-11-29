@@ -1,5 +1,5 @@
 import React from 'react';
-import expect from 'expect';
+// import expect from 'expect';
 import { shallow } from 'enzyme';
 // import renderer from 'react-test-renderer';
 // import SideBar from '../SideBar';
@@ -16,7 +16,7 @@ describe('AppRouter', () => {
   beforeEach(() => {
     routeWrapper = shallow(<AppRouter />);
     routeArray = routeWrapper.getElements();
-    Object.entries(routeArray).forEach(([key, value]) => {
+    Object.entries(routeArray).forEach(([, value]) => {
       routeList.add(value);
     });
   });

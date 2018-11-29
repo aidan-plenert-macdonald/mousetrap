@@ -12,12 +12,23 @@ app.use(bodyParser.urlencoded({extended: true}));
  * @return {Connection} MariaDB/MySQL connection
  */
 function conn() {
-  return mysql.createConnection({
+  var connection =mysql.createConnection({
     host: 'database',
     user: 'root',
     password: 'rootable',
     database: 'mice',
+  }, function(err) {
+    if (err) {
+      throw err;
+    }
   });
+  connection.connect(function(err){
+    if(err){
+      sleep(1);
+      connection = conn();
+    }
+  });
+  return
 }
 
 
@@ -31,6 +42,7 @@ function tableInserter(tablename) {
     conn().query('INSERT INTO ' + tablename + ' SET ?', [req.body],
     function(err, result, fields) {
       if (err) {
+        throw err;
         error = err;
         data = result;
         console.log('DB ERROR: ' + err);
@@ -62,6 +74,7 @@ app.get('/mice', function(req, res) {
   // console.log("hello");
   conn().query('SELECT * FROM mice', function(err, result, fields) {
     if (err) {
+      throw err;
       error = err;
       data = result;
       // console.log("41" + err);

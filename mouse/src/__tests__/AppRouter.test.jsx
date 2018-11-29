@@ -1,8 +1,10 @@
 import React from 'react';
-import Expect from 'expect';
+import expect from 'expect';
 import { shallow } from 'enzyme';
-import renderer from 'react-test-renderer';
-import SideBar from '../SideBar';
+// import renderer from 'react-test-renderer';
+// import SideBar from '../SideBar';
+import List from '@material-ui/core/List';
+import MailFolderListItems from '../tileData';
 import AppRouter from '../AppRouter';
 
 let routeList;
@@ -11,12 +13,12 @@ let list;
 
 describe('AppRouter', () => {
   let routeWrapper;
-  before(() => {
+  beforeEach(() => {
     routeWrapper = shallow(<AppRouter />);
     routeArray = routeWrapper.getElements();
-    for (const component in routeArray) {
-      routeList.add(component);
-    }
+    Object.entries(routeArray).forEach(([key, value]) => {
+      routeList.add(value);
+    });
   });
 
   it('AppRouter renders routes', () => {
@@ -34,11 +36,11 @@ describe('List', () => {
   });
 
   it('Routes identified and confirmed', () => {
-    for (const ListItem in list) {
-      for (const Route in routeList) {
-      // ListItem.getElements(). //ToDo: get custom data from ListItems 
-      //Continue: cross checking ListItem data to RouteList paths
-      }
-    }
+    // for (const ListItem in list) {
+    //   for (const Route in routeList) {
+    //     ListItem.getElements(). //ToDo: get custom data from ListItems
+    //     Continue: cross checking ListItem data to RouteList paths
+    //   }
+    // }
   });
 });

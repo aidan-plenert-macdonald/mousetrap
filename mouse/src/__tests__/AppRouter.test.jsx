@@ -1,34 +1,22 @@
 import React from 'react';
-// import expect from 'expect';
-import { shallow } from 'enzyme';
-// import renderer from 'react-test-renderer';
-// import SideBar from '../SideBar';
+import { shallow, mount } from 'enzyme';
 import List from '@material-ui/core/List';
 import MailFolderListItems from '../tileData';
 import AppRouter from '../AppRouter';
 
-let routeList;
-let routeArray;
-let list;
-
 describe('AppRouter', () => {
   let routeWrapper;
+  let routeArray;
+  let list;
   beforeEach(() => {
-    routeWrapper = shallow(<AppRouter />);
-    routeArray = routeWrapper.getElements();
-    Object.entries(routeArray).forEach(([, value]) => {
-      routeList.add(value);
-    });
+    routeWrapper = mount(<AppRouter />);
+    routeArray = routeWrapper.find(element => element === '<div>').find(element => element === '<Router>').find(element => element === '<Switch>').getElements();
+    routeArray.map(this.props.path);
+    list = shallow(<List>{MailFolderListItems()}</List>);
   });
 
   it('AppRouter renders routes', () => {
     expect(routeArray.find('listItems').length).toEqual(list.length);
-  });
-});
-
-describe('List', () => {
-  beforeEach(() => {
-    list = shallow(<List>{MailFolderListItems()}</List>);
   });
 
   it('List renders table', () => {

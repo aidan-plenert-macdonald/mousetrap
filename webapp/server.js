@@ -9,10 +9,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 /**
  * For renewable connections
- * @return {Connection} MariaDB/MySQL connection
+ *  @return {Connection} MariaDB/MySQL connection
  */
 function conn() {
-  var connection =mysql.createConnection({
+  let connection =mysql.createConnection({
     host: 'database',
     user: 'root',
     password: 'rootable',
@@ -22,13 +22,13 @@ function conn() {
       throw err;
     }
   });
-  connection.connect(function(err){
-    if(err){
+  connection.connect(function(err) {
+    if (err) {
       sleep(1);
       connection = conn();
     }
   });
-  return
+  return connection;
 }
 
 

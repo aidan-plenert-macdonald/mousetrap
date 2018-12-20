@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended: true}));
  *  @return {Connection} MariaDB/MySQL connection
  */
 function conn() {
-  let connection =mysql.createConnection({
+  let connection = mysql.createConnection({
     host: 'database',
     user: 'root',
     password: 'rootable',
@@ -71,13 +71,14 @@ function tableInserter(tablename) {
 */
 
 app.get('/mice', function(req, res) {
-  // console.log("hello");
   conn().query('SELECT * FROM mice', function(err, result, fields) {
     if (err) {
       throw err;
       error = err;
       data = result;
-      // console.log("41" + err);
+      res.json(
+        err
+      );
     } else {
       res.json(
         result
